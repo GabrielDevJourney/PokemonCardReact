@@ -1,27 +1,20 @@
-const typeColorClasses = {
-    normal: 'bg-stone-400',
-    fire: 'bg-orange-500',
-    water: 'bg-blue-500',
-    electric: 'bg-yellow-400',
-    grass: 'bg-green-500',
-    ice: 'bg-blue-200',
-    fighting: 'bg-red-700',
-    poison: 'bg-purple-700',
-    ground: 'bg-yellow-700',
-    flying: 'bg-purple-300',
-    psychic: 'bg-pink-600',
-    bug: 'bg-lime-600',
-    rock: 'bg-yellow-600',
-    ghost: 'bg-purple-800',
-    dragon: 'bg-indigo-700',
-    dark: 'bg-gray-800',
-    steel: 'bg-slate-400',
-    fairy: 'bg-pink-300',
+const colorClasses = {
+    black: 'bg-gray-900',
+    blue: 'bg-blue-500',
+    brown: 'bg-amber-500',
+    gray: 'bg-gray-500',
+    green: 'bg-green-500',
+    pink: 'bg-pink-500',
+    purple: 'bg-purple-500',
+    red: 'bg-red-400',
+    white: 'bg-stone-200',
+    yellow: 'bg-yellow-500',
 };
 
 export const PokemonCard = ({
     name,
-    type = 'psychic',
+    type,
+    color,
     imageUrl,
     health,
     mainAbility,
@@ -36,7 +29,7 @@ export const PokemonCard = ({
     showExtraInfo = false,
 }) => {
     // Get background color based on type
-    const backgroundColor = typeColorClasses[type.toLowerCase()];
+    const backgroundColor = colorClasses[color.toLowerCase()];
 
     return (
         <div>
@@ -45,7 +38,9 @@ export const PokemonCard = ({
                     showExtraInfo ? 'h-[570px]' : 'h-[470px]'
                 } flex flex-col rounded-2xl transition-all duration-300 ease-in-out overflow-hidden ${backgroundColor}`}
             >
-                <div className="absolute w-full h-full pointer-events-none bg-stone-300 opacity-40 rounded-2xl"></div>
+                {
+                    <div className="absolute w-full h-full pointer-events-none opacity-10 rounded-2xl"></div>
+                }
 
                 <div className="relative flex flex-col items-center justify-center mb-4">
                     <img
@@ -77,8 +72,9 @@ export const PokemonCard = ({
                         </svg>
                     </button>
                 </div>
-
-                <div className="grid grid-cols-2 grid-rows-3 mb-6 gap-2 px-[16px] text-teal-50">
+                {/* VISIBLE INFO CONTAINER */}
+                <div className="grid grid-cols-2 grid-rows-3 mb-6 gap-2 px-[16px] text-stone-50">
+                    {/* Health container */}
                     <div className="flex items-center justify-between px-4 py-0">
                         <span className="text-base font-normal">Health</span>
                         <span className="text-base font-bold">{health}</span>
