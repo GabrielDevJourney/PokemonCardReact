@@ -1,23 +1,25 @@
-import { colorClasses } from "../utils/colors";
-export const PokemonCard = ({
-    name,
-    type,
-    color,
-    imageUrl,
-    health,
-    mainAbility,
-    habitat,
-    power,
-    captureRate,
-    friendliness,
-    height,
-    weight,
-    hiddenAbility,
-    speed,
-    showExtraInfo = false,
-}) => {
+import { COLORS } from "../constants/pokemons";
+export const PokemonCard = ({pokemonData}) => {
+    const {
+        name,
+        type,
+        color,
+        imageUrl,
+        health,
+        mainAbility,
+        habitat,
+        power,
+        captureRate,
+        friendliness,
+        height,
+        weight,
+        hiddenAbility,
+        speed,
+        showExtraInfo,
+    } = pokemonData;
+
     // Get background color based on type
-    const colors = colorClasses[color.toLowerCase()];
+    const colors = COLORS[color.toLowerCase()];
 
     return (
         <div>
@@ -25,7 +27,9 @@ export const PokemonCard = ({
             <div
                 className={`relative w-[500px] ${
                     showExtraInfo ? 'h-[570px]' : 'h-[470px]'
-                } flex flex-col rounded-2xl transition-all duration-300 ease-in-out overflow-hidden ${colors.background}`}
+                } flex flex-col rounded-2xl transition-all duration-300 ease-in-out overflow-hidden ${
+                    colors.background
+                }`}
             >
                 {/*CARD OPACITY CONTAINER */}
                 {
@@ -95,7 +99,9 @@ export const PokemonCard = ({
                     </div>
                 </div>
                 {showExtraInfo && (
-                    <div className={`grid grid-cols-2 grid-rows-2 border-t border-teal-50 gap-2 px-[16px] h-[100px] ${colors.text}`}>
+                    <div
+                        className={`grid grid-cols-2 grid-rows-2 border-t border-teal-50 gap-2 px-[16px] h-[100px] ${colors.text}`}
+                    >
                         <div className="flex justify-between items-center py-0 px-[16px]">
                             <span className="text-base font-normal">Height</span>
                             <span className="text-base font-bold">{height}</span>

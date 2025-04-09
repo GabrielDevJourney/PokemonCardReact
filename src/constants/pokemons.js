@@ -1,4 +1,20 @@
-export const colorClasses = {
+export const POKEMON_BASE_INFO_URL = 'https://pokeapi.co/api/v2/pokemon/';
+export const POKEMON_SPECIES_INFO_URL = 'https://pokeapi.co/api/v2/pokemon-species/';
+export const DEFAULT_POKEMON = 'Mewtwo';
+export const POKEMON_LIST = [
+    'Bulbasaur',
+    'Gengar',
+    'Lucario',
+    'Porygon',
+    'Salamence',
+    'Chandelure',
+    'Mewtwo',
+    'Alakazam',
+    'Charizard',
+    'Flareon',
+    'abc',
+];
+export const COLORS = {
     black: {
         background: 'bg-gray-900',
         text: 'text-amber-400',

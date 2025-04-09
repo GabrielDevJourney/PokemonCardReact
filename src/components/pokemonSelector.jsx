@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { PokemonOption } from './pokemonOption';
-import { colorClasses } from '../utils/colors';
+import { COLORS } from '../constants/pokemons';
+import { POKEMON_LIST } from '../constants/pokemons';
 
 export const PokemonSelector = ({ onSelectedPokemon, currentPokemon, color }) => {
     const [isOpen, setIsDropdownOpen] = useState(false);
-    const colors = colorClasses[color.toLowerCase()];
+    const colors = COLORS[color.toLowerCase()];
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isOpen);
@@ -17,19 +18,6 @@ export const PokemonSelector = ({ onSelectedPokemon, currentPokemon, color }) =>
         setIsDropdownOpen(false);
     };
 
-    const pokemonList = [
-        'Bulbasaur',
-        'Gengar',
-        'Lucario',
-        'Porygon',
-        'Salamence',
-        'Chandelure',
-        'Mewtwo',
-        'Alakazam',
-        'Charizard',
-        'Flareon',
-        'abc',
-    ];
 
     return (
         <div>
@@ -51,7 +39,7 @@ export const PokemonSelector = ({ onSelectedPokemon, currentPokemon, color }) =>
                             className={` ${colors.background} rounded-2xl border-t border-t-stone-50 top-[120%] absolute h-auto w-full  flex-col items-center justify-center z-50`}
                         >
                             <div className="absolute w-full h-full pointer-events-none opacity-20 bg-stone-50 rounded-2xl"></div>
-                            {pokemonList.map(pokemon => (
+                            {POKEMON_LIST.map(pokemon => (
                                 <PokemonOption
                                     key={pokemon}
                                     value={pokemon}

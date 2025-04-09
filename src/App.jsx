@@ -3,9 +3,9 @@ import { PokemonCard } from './components/pokemonCard';
 import { PokemonSelector } from './components/pokemonSelector';
 import { PokemonNotFoundAlert } from './components/pokemonNotFound';
 import { usePokemonData } from './hook/usePokemonData';
+import { DEFAULT_POKEMON } from './constants/pokemons';
 
 export const App = () => {
-    const DEFAULT_POKEMON = 'Mewtwo';
     const [selectedPokemon, setSelectedPokemon] = useState(DEFAULT_POKEMON);
 
     const { pokemonData, isLoading, error } = usePokemonData(selectedPokemon);

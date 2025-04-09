@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { formatedPokemonData } from '../utils/formatFetchData';
+import { POKEMON_BASE_INFO_URL, POKEMON_SPECIES_INFO_URL } from '../constants/pokemons';
 
 export const usePokemonData = selectedPokemon => {
     const [pokemonData, setPokemonData] = useState(null);
@@ -20,9 +21,9 @@ export const usePokemonData = selectedPokemon => {
             setIsLoading(true);
             try {
                 const [pokemonResponse, speciesResponse] = await Promise.all([
-                    fetchPokemonResponse(`https://pokeapi.co/api/v2/pokemon/${selectedPokemon}`),
+                    fetchPokemonResponse(`${POKEMON_BASE_INFO_URL}${selectedPokemon}`),
                     fetchPokemonResponse(
-                        `https://pokeapi.co/api/v2/pokemon-species/${selectedPokemon}`,
+                        `${POKEMON_SPECIES_INFO_URL}${selectedPokemon}`,
                     ),
                 ]);
 
