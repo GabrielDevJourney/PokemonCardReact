@@ -1,12 +1,14 @@
 export const ExtraInfoButton = ({ colors, showExtraInfo, setShowExtraInfo }) => {
-    const handleExtraInfoClick = () => {
+    const handleClick = () => {
         setShowExtraInfo(!showExtraInfo);
     };
 
     return (
         <button
             className="pr-[16px] appearance-none border-0 bg-transparent cursor-pointer"
-            onClick={handleExtraInfoClick}
+            onClick={handleClick}
+            aria-label={showExtraInfo ? 'Hide extra information' : 'Show extra information'}
+            aria-expanded={showExtraInfo}
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -15,6 +17,7 @@ export const ExtraInfoButton = ({ colors, showExtraInfo, setShowExtraInfo }) => 
                 strokeWidth="1.5"
                 stroke="currentColor"
                 className={`w-[32px] h-[32px] ${colors.text}`}
+                aria-hidden="true"
             >
                 <path
                     strokeLinecap="round"

@@ -34,17 +34,17 @@ export const App = () => {
     };
 
     return isLoading || showSkeleton ? (
-        <div className="flex flex-col items-center mt-25">
+        <div className="flex flex-col items-center w-full mt-25">
             {showDropdown()}
             <SkeletonPokemonCard />
         </div>
     ) : error ? (
-        <div className="flex flex-col items-center mt-25">
+        <div className="flex flex-col items-center w-full mt-25">
             <PokemonNotFoundAlert name={selectedPokemon}></PokemonNotFoundAlert>
             {showDropdown()}
         </div>
     ) : pokemonData ? (
-        <div className="flex flex-col items-center mt-25">
+        <div className="flex flex-col items-center w-full mt-25">
             {showDropdown()}
             <PokemonCard pokemonData={pokemonData}></PokemonCard>
         </div>

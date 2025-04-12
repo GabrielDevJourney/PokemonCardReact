@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.ico" />
+    <link rel="preconnect" href="https://pokeapi.co/api/v2/pokemon/">
+    <link rel="preconnect" href="https://pokeapi.co/api/v2/pokemon-species/">
+    <meta name="description" content="Explore Pokémon information with interactive cards and detailed stats">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemon</title>
 </head>
 
 <body class="bg-yellow-100 flex flex-col items-center">
-    <img src="./src/assets/pokemonData.png" alt="" class="w-200">
+    <img src="./src/assets/pokemonData.png" alt="" width="200" height="200" class="w-200">
     <div id="root">
     </div>
     <script type="module" src="/src/main.jsx"></script>

@@ -24,23 +24,25 @@ export const PokemonCard = ({ pokemonData }) => {
     // Get background color based on type
     const colors = COLORS[color.toLowerCase()];
     const [showExtraInfo, setShowExtraInfo] = useState(false);
+
     return (
         <div>
             {/*CARD CONTAINER*/}
             <div
                 className={`relative w-[500px] ${
                     showExtraInfo ? 'h-[550px]' : 'h-[470px]'
-                } flex flex-col rounded-2xl transition-all duration-500 ease-in-out overflow-hidden ${
+                } flex flex-col rounded-2xl transition-all duration-300 ease-in-out overflow-hidden ${
                     colors.background
                 }`}
             >
                 {/*CARD OPACITY CONTAINER */}
-                {
-                    <div className="absolute w-full h-full pointer-events-none opacity-10 rounded-2xl"></div>
-                }
-                {/*IMAGE CONAINER */}
+                <div className="absolute w-full h-full pointer-events-none opacity-10 rounded-2xl"></div>
+
+                {/*IMAGE CONTAINER */}
                 <div className="relative flex flex-col items-center justify-center mb-4">
                     <img
+                        width={200}
+                        height={200}
                         className="w-[200px] h-[200px]"
                         src={imageUrl || `/api/placeholder/200/200`}
                         alt={`${name} Pokemon`}
@@ -50,8 +52,9 @@ export const PokemonCard = ({ pokemonData }) => {
                         <span>{type}</span>
                     </div>
                 </div>
+
                 <div className="flex flex-row justify-between p-[16px] mb-4">
-                    <h2 className={`pl-[16px] text-3xl ${colors.text} font-bold1`}>{name}</h2>
+                    <h2 className={`pl-[16px] text-3xl ${colors.text} font-bold`}>{name}</h2>
                     {/* BUTTON EXTEND INFO */}
                     <ExtraInfoButton
                         colors={colors}
@@ -59,6 +62,7 @@ export const PokemonCard = ({ pokemonData }) => {
                         setShowExtraInfo={setShowExtraInfo}
                     ></ExtraInfoButton>
                 </div>
+
                 {/* VISIBLE INFO CONTAINER */}
                 <div className={`grid grid-cols-2 grid-rows-3 mb-6 gap-2 px-4 ${colors.text}`}>
                     {/* Health container */}
@@ -69,6 +73,7 @@ export const PokemonCard = ({ pokemonData }) => {
                     <PokemonInfo typeOfData={'Capture Rate'} data={captureRate}></PokemonInfo>
                     <PokemonInfo typeOfData={'Friendliness'} data={friendliness}></PokemonInfo>
                 </div>
+
                 {/* HIDDEN INFO CONTAINER */}
                 {showExtraInfo && (
                     <div
