@@ -15,7 +15,7 @@ export const App = () => {
         setShowSkeleton(true);
         const timer = setTimeout(() => {
             setShowSkeleton(false);
-        }, 1500);
+        }, 2000);
         return () => clearTimeout(timer);
     }, [selectedPokemon]);
 
@@ -40,8 +40,8 @@ export const App = () => {
         </div>
     ) : error ? (
         <div className="flex flex-col items-center w-full mt-25">
-            <PokemonNotFoundAlert name={selectedPokemon}></PokemonNotFoundAlert>
             {showDropdown()}
+            <PokemonNotFoundAlert name={selectedPokemon}></PokemonNotFoundAlert>
         </div>
     ) : pokemonData ? (
         <div className="flex flex-col items-center w-full mt-25">

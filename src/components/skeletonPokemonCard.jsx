@@ -9,7 +9,7 @@ export const SkeletonPokemonCard = () => {
                 }
                 {/*IMAGE CONAINER */}
                 <div className="relative flex flex-col items-center justify-center mb-4 animate-pulse">
-                    <div className="w-[200px] h-[200px] bg-gray-400 rounded animate-pulse"></div>
+                    <div className="w-[200px] h-[200px] bg-gray-400 animate-pulse rounded-full"></div>
                     {/* BADGE TYPE CONTAINER */}
                     <div className="bg-gray-400 text-2xl flex justify-center items-center w-[200px] h-[40px] rounded-lg  font-medium animate-pulse">
                     </div>
@@ -21,7 +21,7 @@ export const SkeletonPokemonCard = () => {
                     <div className="w-[32px] h-[32px] bg-gray-400 rounded-full animate-pulse"></div>
                 </div>
                 {/* VISIBLE INFO CONTAINER */}
-                <div className="grid grid-cols-2 grid-rows-3 mb-6 gap-2 px-4">
+                <div className="px-4 mb-6 grid grid-cols-2 grid-rows-3 gap-2">
                     {/* Info placeholders */}
                     {[...Array(6)].map((_, index) => (
                         <div
