@@ -1,11 +1,10 @@
 import { PokemonResponse } from './types';
 import { PokemonSpeciesResponse } from './types';
-import { PokemonDataProps } from '../../types/types';
+import { PokemonDataProps } from '../../types/pokemonDataProps';
 interface FormatedPokemonDataProps {
     pokemonResponse: PokemonResponse;
     speciesResponse: PokemonSpeciesResponse;
 }
-
 
 const formatData = (data: string): string => {
     return data.charAt(0).toUpperCase() + data.slice(1);

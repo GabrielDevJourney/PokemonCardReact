@@ -1,17 +1,22 @@
-import { ColorStyle } from "../../constants/pokemons";
+import React from 'react';
+import { ColorStyle } from '../../constants/pokemons';
 interface ExtraInfoButtonProps {
     colors: ColorStyle;
-    showExtraInfo : boolean;
-    setShowExtraInfo: React.Dispatch<React.SetStateAction<boolean>>
+    showExtraInfo: boolean;
+    setShowExtraInfo: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export const ExtraInfoButton = ({ colors, showExtraInfo, setShowExtraInfo } : ExtraInfoButtonProps) => {
+export const ExtraInfoButton = ({
+    colors,
+    showExtraInfo,
+    setShowExtraInfo,
+}: ExtraInfoButtonProps) => {
     const handleClick = () => {
         setShowExtraInfo(!showExtraInfo);
     };
 
     return (
         <button
-            className="pr-[16px] appearance-none border-0 bg-transparent cursor-pointer"
+            className="cursor-pointer appearance-none border-0 bg-transparent pr-[16px]"
             onClick={handleClick}
             aria-label={showExtraInfo ? 'Hide extra information' : 'Show extra information'}
             aria-expanded={showExtraInfo}
@@ -22,7 +27,7 @@ export const ExtraInfoButton = ({ colors, showExtraInfo, setShowExtraInfo } : Ex
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className={`w-[32px] h-[32px] ${colors.text}`}
+                className={`h-[32px] w-[32px] ${colors.text}`}
                 aria-hidden="true"
             >
                 <path

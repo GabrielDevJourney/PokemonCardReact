@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { PokemonDataProps } from '../types/types';
-import { formatedPokemonData } from '../utils/formatFetchData/formatFetchData';
+import { PokemonDataProps } from '../types/pokemonDataProps';
+import { formatedPokemonData } from '../utils/formatData/formatPokemonData';
 import { POKEMON_BASE_INFO_URL, POKEMON_SPECIES_INFO_URL } from '../constants/pokemons';
 
 export const usePokemonData = (selectedPokemon: string) => {
     const [pokemonData, setPokemonData] = useState<PokemonDataProps | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(false);
+    const [isLoading, setIsLoading] = useState<boolean | null>(true);
+    const [error, setError] = useState<boolean | null>(null);
 
     const fetchPokemonResponse = async (url: string) => {
         const response = await fetch(url);
@@ -20,7 +20,6 @@ export const usePokemonData = (selectedPokemon: string) => {
         //reset error bo be able to fetch for new pokemon
         setError(false);
         const fetchPokemonData = async () => {
-            setIsLoading(true);
             try {
                 const [pokemonResponse, speciesResponse] = await Promise.all([
                     fetchPokemonResponse(`${POKEMON_BASE_INFO_URL}${selectedPokemon}`),

@@ -4,7 +4,7 @@ import { PokemonSelector } from './components/PokemonSelector';
 import { PokemonNotFoundAlert } from './components/PokemonNotFound';
 import { SkeletonPokemonCard } from './components/SkeletonPokemonCard';
 import { DEFAULT_POKEMON } from './constants/pokemons';
-import { usePokemonData } from './hook/usePokemonData';
+import { usePokemonData } from './hooks/usePokemonData';
 
 export const App = () => {
     const [selectedPokemon, setSelectedPokemon] = useState(DEFAULT_POKEMON);
@@ -23,15 +23,13 @@ export const App = () => {
         setSelectedPokemon(pokemon);
     };
 
-    const showDropdown = () => {
-        return (
-            <PokemonSelector
-                onSelectedPokemon={handlePokemonSelect}
-                currentPokemon={selectedPokemon}
-                color={error ? 'purple' : pokemonData?.color || 'purple'}
-            ></PokemonSelector>
-        );
-    };
+    const showDropdown = () => (
+        <PokemonSelector
+            onSelectedPokemon={handlePokemonSelect}
+            currentPokemon={selectedPokemon}
+            color={error ? 'purple' : pokemonData?.color || 'purple'}
+        />
+    );
 
     return isLoading || showSkeleton ? (
         <div className="mt-25 flex w-full flex-col items-center">
@@ -41,12 +39,12 @@ export const App = () => {
     ) : error ? (
         <div className="mt-25 flex w-full flex-col items-center">
             {showDropdown()}
-            <PokemonNotFoundAlert name={selectedPokemon}></PokemonNotFoundAlert>
+            <PokemonNotFoundAlert name={selectedPokemon} />
         </div>
     ) : pokemonData ? (
         <div className="mt-25 flex w-full flex-col items-center">
             {showDropdown()}
-            <PokemonCard {...pokemonData}></PokemonCard>
+            <PokemonCard {...pokemonData} />
         </div>
     ) : (
         <div>something went wrong</div>
