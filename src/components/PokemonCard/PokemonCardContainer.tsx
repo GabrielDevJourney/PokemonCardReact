@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PokemonCardView } from './PokemonCardView';
+import PokemonCardView from './PokemonCardView';
 import { PokemonDataProps } from '../../types/pokemonDataProps';
 
 export const PokemonCardContainer = (pokemonData: PokemonDataProps) => {
