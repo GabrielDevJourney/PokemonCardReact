@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import ExtraInfoButton from '.';
 import { useState } from 'react';
 
@@ -24,7 +24,7 @@ describe('ExtraInfoButton component', () => {
         expect(button).toBeInTheDocument();
     });
 
-    it('should toggle showExtraInfo and update aria attributes on each click starting from false)', () => {
+    it('should toggle showExtraInfo and update aria attributes on each click starting from false)', async () => {
         const Wrapper = () => {
             const [showExtraInfo, setShowExtraInfo] = useState(false);
 
@@ -43,13 +43,22 @@ describe('ExtraInfoButton component', () => {
         render(<Wrapper />);
 
         const button = screen.getByTestId('more-info-button');
-        fireEvent.click(button);
 
-        expect(button).toHaveAttribute('aria-label', 'Hide extra information');
-        expect(button).toHaveAttribute('aria-expanded', 'true');
-
-        fireEvent.click(button);
         expect(button).toHaveAttribute('aria-label', 'Show extra information');
         expect(button).toHaveAttribute('aria-expanded', 'false');
+
+        fireEvent.click(button);
+        await waitFor(() => {
+            expect(button).toHaveAttribute('aria-label', 'Hide extra information');
+            expect(button).toHaveAttribute('aria-expanded', 'true');
+        });
+
+        fireEvent.click(button);
+        await waitFor(() => {
+            expect(button).toHaveAttribute('aria-label', 'Show extra information');
+            expect(button).toHaveAttribute('aria-expanded', 'false');
+        });
+
+        
     });
 });
