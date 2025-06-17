@@ -1,7 +1,7 @@
-import { PokemonResponse } from './types';
-import { PokemonSpeciesResponse } from './types';
+import { PokemonResponse } from '../../types/types';
+import { PokemonSpeciesResponse } from '../../types/types';
 import { PokemonDataProps } from '../../types/pokemonDataProps';
-interface FormatedPokemonDataProps {
+interface RawPokemonData {
     pokemonResponse: PokemonResponse;
     speciesResponse: PokemonSpeciesResponse;
 }
@@ -10,7 +10,7 @@ const formatData = (data: string): string => {
     return data.charAt(0).toUpperCase() + data.slice(1);
 };
 
-export const formatedPokemonData = (data: FormatedPokemonDataProps): PokemonDataProps => {
+export const formatedPokemonData = (data: RawPokemonData): PokemonDataProps => {
     const name = data.pokemonResponse.name;
     const type = data.pokemonResponse.types[0].type.name;
     const color = data.speciesResponse.color.name;
@@ -18,6 +18,7 @@ export const formatedPokemonData = (data: FormatedPokemonDataProps): PokemonData
     const health = data.pokemonResponse.stats.find(stat => stat.stat.name === 'hp')?.base_stat ?? 0;
     const mainAbility = data.pokemonResponse.abilities[0].ability.name;
     const habitat = data.speciesResponse.habitat ? data.speciesResponse.habitat.name : 'Unknown';
+    //adds all stats to calculate full power
     const power = data.pokemonResponse.stats.reduce((total, stat) => total + stat.base_stat, 0);
     const captureRate = `${data.speciesResponse.capture_rate}/255`;
     const friendliness = `${data.speciesResponse.base_happiness}/255`;

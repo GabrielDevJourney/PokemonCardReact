@@ -27,6 +27,7 @@ export const usePokemonData = (selectedPokemon: string) => {
                 ]);
 
                 const formattedData = formatedPokemonData({ pokemonResponse, speciesResponse });
+                console.log(formattedData)
 
                 setPokemonData(formattedData);
             } catch (error) {

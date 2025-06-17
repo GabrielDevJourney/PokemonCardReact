@@ -1,11 +1,19 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectShowExtraInfo, toggle } from '../../store/slices/extraInfoSlice';
 import PokemonCardView from './PokemonCardView';
 import { PokemonDataProps } from '../../types/pokemonDataProps';
 
 export const PokemonCardContainer = (pokemonData: PokemonDataProps) => {
-    const [showExtraInfo, setShowExtraInfo] = useState(false);
-    const toggleExtraInfo = () => setShowExtraInfo((prev) => !prev)
+    const dispatch = useDispatch();
+    const showExtraInfo = useSelector(selectShowExtraInfo);
+
+    const toggleExtraInfo = () => dispatch(toggle());
+
     return (
-        <PokemonCardView {...pokemonData} showExtraInfo={showExtraInfo} toggleExtraInfo= {toggleExtraInfo}></PokemonCardView>
-    )
+        <PokemonCardView
+            {...pokemonData}
+            showExtraInfo={showExtraInfo}
+            toggleExtraInfo={toggleExtraInfo}
+        />
+    );
 };

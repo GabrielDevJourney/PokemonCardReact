@@ -5,16 +5,16 @@ interface ExtraInfoButtonProps {
     showExtraInfo: boolean;
     setShowExtraInfo: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const ExtraInfoButton = ({ colors, showExtraInfo, setShowExtraInfo }: ExtraInfoButtonProps) => {
-    const handleClick = () => {
-        setShowExtraInfo(!showExtraInfo);
-    };
 
+const ExtraInfoButton = ({ colors, showExtraInfo, setShowExtraInfo }: ExtraInfoButtonProps) => {
+    const handleOnClick = () => {
+        setShowExtraInfo(prev => !prev);
+    };
     return (
         <button
             data-testid="more-info-button"
             className="cursor-pointer appearance-none border-0 bg-transparent pr-[16px]"
-            onClick={handleClick}
+            onClick={handleOnClick}
             aria-label={showExtraInfo ? 'Hide extra information' : 'Show extra information'}
             aria-expanded={showExtraInfo}
         >
